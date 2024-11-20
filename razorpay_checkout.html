@@ -1,0 +1,36 @@
+
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+            </head>
+            <body>
+                <script>
+                    var options = {
+                        key: 'rzp_test_hf2afT5lk394ug',  // Razorpay API Key
+                        amount: 3500,  // Amount in paise (integer)
+                        currency: 'INR',
+                        name: 'Your Company',
+                        description: 'Test Payment',
+                        order_id: 'order_PNSfcDKqYqxrYn',  // Order ID from Razorpay API
+                        handler: function(response) {
+                            alert('Payment successful: ' + response.razorpay_payment_id);
+                        },
+                        modal_error: function(response) {
+                            alert('Payment failed: ' + response.error.description);
+                        },
+                        prefill: {
+                            name: 'John Doe',
+                            email: 'john.doe@example.com',
+                            contact: '8639028233',
+                        },
+                        theme: {
+                            color: '#F37254'
+                        }
+                    };
+                    var rzp1 = new Razorpay(options);
+                    rzp1.open();
+                </script>
+            </body>
+            </html>
+            
